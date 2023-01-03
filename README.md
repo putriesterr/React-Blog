@@ -1,6 +1,6 @@
 # React Blog
 
-### Final Project React
+## Final Project React
 Too see it running, it requires to start the fake API application project [blog-api](https://github.com/muhammadfarrel/Blog-API). 
 
 ## Install and Start
