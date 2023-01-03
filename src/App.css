@@ -4300,9 +4300,9 @@ button:disabled,
 }
 
 .like-active {
-  background-color: #FF0063;
+  background-color: paleturquoise;
 }
 
 .dislike-active {
-  background-color: #394350;
+  background-color: pink;
 }

@@ -70,7 +70,9 @@ export default function Posts(props) {
     fetch(props.apiUrl + uri)
       .then((response) => response.json())
       .then((response) => {
-        setPosts(response);
+        setPosts(response)
+        setLikeCount(response[0].likes)
+        setDislikeCount(response[0].dislike)
       });
   }, [postId, name]);
 
