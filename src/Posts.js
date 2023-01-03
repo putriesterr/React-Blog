@@ -9,56 +9,36 @@ export default function Posts(props) {
   const [active, setActive] = useState(false);
   const [unactive, setUnActive] = useState(false);
 
-  const [likeCount, setLikeCount] = useState(50);
-  const [dislikeCount, setDislikeCount] = useState(25);
+  // const numberOfLikes = 0;
 
-  const [activeBtn, setActiveBtn] = useState("none");
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
 
-  const handleClick = () => {
-    setActive(!active);
-  };
-
-  const handleUnClick = () => {
-    setUnActive(!unactive);
-  };
+  // const likeCountOrigin = numberOfLikes;
+  // const dislikeCountOrigin = numberOfLikes;
 
   const handleLikeClick = () => {
-    if (activeBtn === "none") {
-      setLikeCount(likeCount + 1);
-      setActiveBtn("like");
-      return;
-    }
-
-    if (activeBtn === 'like') {
+    setActive(!active);
+    setLikeCount(likeCount + 1);
+    if (active === true) {
       setLikeCount(likeCount - 1);
-      setActiveBtn("none");
-      return;
     }
-
-    if (activeBtn === "dislike") {
-      setLikeCount(likeCount + 1);
+    if (unactive === true) {
+      setUnActive(false);
       setDislikeCount(dislikeCount - 1);
-      setActiveBtn("like");
     }
   };
 
-  const handleDisikeClick = () => {
-    if (activeBtn === "none") {
-      setDislikeCount(dislikeCount + 1);
-      setActiveBtn("dislike");
-      return;
-    }
-
-    if (activeBtn === 'dislike') {
+  const handleDislikeClick = () => {
+    setUnActive(!unactive);
+    setDislikeCount(dislikeCount + 1);
+    setLikeCount(likeCount);
+    if (unactive === true) {
       setDislikeCount(dislikeCount - 1);
-      setActiveBtn("none");
-      return;
     }
-
-    if (activeBtn === "like") {
-      setDislikeCount(dislikeCount + 1);
+    if (active === true) {
+      setActive(false);
       setLikeCount(likeCount - 1);
-      setActiveBtn("dislike");
     }
   };
 
@@ -70,9 +50,9 @@ export default function Posts(props) {
     fetch(props.apiUrl + uri)
       .then((response) => response.json())
       .then((response) => {
-        setPosts(response)
-        setLikeCount(response[0].likes)
-        setDislikeCount(response[0].dislike)
+        setPosts(response);
+        setLikeCount(response[0].likes);
+        setDislikeCount(response[0].dislike);
       });
   }, [postId, name]);
 
@@ -84,28 +64,31 @@ export default function Posts(props) {
             <h1>{post.title}</h1>
           </header>
           <h3>{post.resume}</h3>
-          <p>{post.text}</p>
-          <div className="container">
-            <div className="btn-container">
-              <button
-                className={`btn ${activeBtn === "like" ? "like-active" : ""}`}
-                onClick={handleLikeClick}
-                Style={{ border: "1 px solid white" }}
-              >
-                <i class="fa fa-thumbs-up"></i>
-                {likeCount}
-              </button>
-
-              <button
-                className={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`}
-                onClick={handleDisikeClick}
-                Style={{ border: "1 px solid white" }}
-              >
-                <i class="fa fa-thumbs-down"></i>
-                {dislikeCount}
-              </button>
-            </div>
-          </div>
+          <p id="text-body">{post.text}</p>
+          <button
+            id="thumbs-up"
+            style={{ backgroundColor: active ? "#BFEAF5" : "white" }}
+            onClick={handleLikeClick}
+          >
+            <i
+              class="fa fa-thumbs-up"
+              style={{ color: active ? "black" : "salmon" }}
+            >
+              {likeCount}
+            </i>
+          </button>
+          <button
+            id="thumb-down"
+            style={{ backgroundColor: unactive ? "pink" : "white" }}
+            onClick={handleDislikeClick}
+          >
+            <i
+              class="fa fa-thumbs-down"
+              style={{ color: unactive ? "black" : "salmon" }}
+            >
+              {dislikeCount}
+            </i>
+          </button>
           <h4>Related Links</h4>
           <ul className="alt">
             {post.relatedlinks.map((link, index) => (
