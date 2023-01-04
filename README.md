@@ -8,6 +8,6 @@ Too see it running, it requires to start the fake API application project [blog-
 - npm start
 
 ## Contributors
-1. Aditya Fahrezantara
-2. Muhammad Farrel
+1. [Aditya Fahrezantara](https://github.com/aditya-f)
+2. [Muhammad Farrel](https://github.com/muhammadfarrel)
 3. Putri Ester 
