@@ -4264,3 +4264,12 @@ button:disabled,
 #thumb-down {
   margin-bottom: 20px;
 }
+
+.count {
+  margin-left: 10px;
+  font-size: medium;
+}
+
+.fa{
+  font-size: medium;
+}
