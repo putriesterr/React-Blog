@@ -74,7 +74,7 @@ export default function Posts(props) {
               class="fa fa-thumbs-up"
               style={{ color: active ? "black" : "salmon" }}
             >
-              {likeCount}
+              <span class="count">{likeCount}</span>
             </i>
           </button>
           <button
@@ -86,7 +86,7 @@ export default function Posts(props) {
               class="fa fa-thumbs-down"
               style={{ color: unactive ? "black" : "salmon" }}
             >
-              {dislikeCount}
+              <span class="count">{dislikeCount}</span>
             </i>
           </button>
           <h4>Related Links</h4>
