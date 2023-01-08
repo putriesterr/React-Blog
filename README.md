@@ -11,3 +11,6 @@ Too see it running, it requires to start the fake API application project [blog-
 1. [Aditya Fahrezantara](https://github.com/aditya-f)
 2. [Muhammad Farrel](https://github.com/muhammadfarrel)
 3. [Putri Ester](https://github.com/putriesterr)
+
+## Link Github
+* https://github.com/putriesterr/React-Blog
